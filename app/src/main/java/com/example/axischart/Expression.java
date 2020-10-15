@@ -19,24 +19,13 @@ public class Expression {
         T_Unknown //其他
     };
 
-
     protected String strExp;
-
-
     protected Expression()
     {
-
-
     }
-
-
-
 
     private double dVal;
     private String strVal;
-
-
-
 
     private int nExpIndex;
 
@@ -85,9 +74,6 @@ public class Expression {
                     return Token.T_Mul;
 
                 case '/':
-                    nExpIndex++;
-                    return Token.T_Div;
-
                 case '%':
                     nExpIndex++;
                     return Token.T_Div;
@@ -103,7 +89,6 @@ public class Expression {
                 case ')':
                     nExpIndex++;
                     return Token.T_RB;
-
 
                 //解析数字，数字的合法形式为[0-9]+('.'[0-9]+)?,即要么是整数，要么是小数
                 case '0':
@@ -395,7 +380,7 @@ public class Expression {
                         dv = Math.cos(dv);
                         break;
 
-                    case "tg":
+                    case "tan":
                         tok = GetNextToken();
                         skip(Token.T_LB);
                         dv = sum();
@@ -403,7 +388,7 @@ public class Expression {
                         dv = Math.tan(dv);
                         break;
 
-                    case "ctg":
+                    case "cotan":
                         skip(Token.T_LB);
                         dv = sum();
                         skip(Token.T_RB);
@@ -432,11 +417,7 @@ public class Expression {
 
             //一元减
             case T_Minus:
-                tok = GetNextToken();
-                dv = -unary();
-                break;
-
-            //一元加
+                //一元加
             case T_Plus:
                 tok = GetNextToken();
                 dv = -unary();

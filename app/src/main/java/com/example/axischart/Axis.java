@@ -18,54 +18,12 @@ public class Axis {
     private Rect mRect;
 
     public Axis(Rect rect) {
-        nMinX = -10;
-        nMaxX = 10;
-        nMinY = -10;
-        nMaxY = 10;
+        nMinX = -20;
+        nMaxX = 20;
+        nMinY = -20;
+        nMaxY = 20;
 
         mRect = rect;
-    }
-
-    public int getnMaxX() {
-        return nMaxX;
-    }
-
-    public void setnMaxX(int nMaxX) {
-        this.nMaxX = nMaxX;
-    }
-
-    public int getnMaxY() {
-        return nMaxY;
-    }
-
-    public void setnMaxY(int nMaxY) {
-        this.nMaxY = nMaxY;
-    }
-
-    public int getnMinX() {
-        return nMinX;
-    }
-
-    public void setnMinX(int nMinX) {
-        this.nMinX = nMinX;
-    }
-
-    public int getnMinY() {
-        return nMinY;
-    }
-
-    public void setnMinY(int nMinY) {
-        this.nMinY = nMinY;
-    }
-
-
-    //将逻辑坐标转换为物理坐标
-    public Point convertLP2DP(Point point) {
-        Point pointNew = new Point();
-        pointNew.x = convertXLP2DP(point.x);
-        pointNew.y = convertYLP2DP(point.y);
-
-        return pointNew;
     }
 
     //将逻辑坐标转换为物理坐标
@@ -75,8 +33,7 @@ public class Axis {
 
     //将逻辑坐标转换为物理坐标
     public int convertYLP2DP(double y) {
-        return mRect.bottom
-                - (int) (mRect.height() / (double) (nMaxY - nMinY) * (y - nMinX));
+        return mRect.bottom - (int) (mRect.height() / (double) (nMaxY - nMinY) * (y - nMinX));
     }
 
 
@@ -85,7 +42,7 @@ public class Axis {
         //画笔
         Paint paint = new Paint();
         paint.setAntiAlias(true);
-        paint.setColor(Color.BLUE);
+        paint.setColor(Color.BLACK);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(5);
 
@@ -99,12 +56,21 @@ public class Axis {
 
 
         //绘制坐标轴上的坐标（数字）
-        paint.setStrokeWidth(1);
-        paint.setTextSize(9);
+        paint.setStrokeWidth(2);
+        paint.setTextSize(20);
+
         canvas.drawText("0", convertXLP2DP(nX), convertYLP2DP(-nY), paint);//原点
-        canvas.drawText(nMinX + "", convertXLP2DP(nMinX+nX), convertYLP2DP(-nY), paint);//x最小
+        canvas.drawText("5",convertXLP2DP(5), convertYLP2DP(-nY), paint);
+        canvas.drawText("-5", convertXLP2DP(-5), convertYLP2DP(-nY), paint);
+        canvas.drawText("5", convertXLP2DP(nX), convertYLP2DP(5), paint);
+        canvas.drawText("-5", convertXLP2DP(nX), convertYLP2DP(-5), paint);
+        canvas.drawText("10",convertXLP2DP(10), convertYLP2DP(-nY), paint);
+        canvas.drawText("-10", convertXLP2DP(-10), convertYLP2DP(-nY), paint);
+        canvas.drawText("10", convertXLP2DP(nX), convertYLP2DP(10), paint);
+        canvas.drawText("-10", convertXLP2DP(nX), convertYLP2DP(-10), paint);
+        canvas.drawText(nMinX+"",convertXLP2DP(nMinX+nX), convertYLP2DP(-nY), paint);//x最小
         canvas.drawText(nMinX+"",convertXLP2DP(nMaxX-nX), convertYLP2DP(-nY),paint);//x最大
-        canvas.drawText(nMinY+"",convertXLP2DP(-nX), convertYLP2DP(nMinY+nY),paint);//y最小
-        canvas.drawText(nMinY+"",convertXLP2DP(-nX), convertYLP2DP(nMaxY-nY),paint);//y最大
+        canvas.drawText(nMinY+"",convertXLP2DP(nX), convertYLP2DP(nMinY+nY),paint);//y最小
+        canvas.drawText(nMinY+"",convertXLP2DP(nX), convertYLP2DP(nMaxY-nY),paint);//y最大
     }
 }

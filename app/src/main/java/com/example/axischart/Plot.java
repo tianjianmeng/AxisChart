@@ -8,53 +8,17 @@ import android.graphics.Rect;
 
 
 public class Plot {
-    public Plot(Axis mAxis)
-    {
-        this.mAxis=mAxis;
-        m_strExp = "";
-        m_strvar = "x";
-        m_nMinX = -10;
-        m_nMaxX = 10;
-        m_cLine = Color.RED;
-    }
-    public Plot(Axis mAxis,String strExp)
-    {
-        this.mAxis=mAxis;
-        m_strExp = strExp;
-        m_strvar = "x";
-        m_nMinX = -10;
-        m_nMaxX = 10;
-        m_cLine = Color.RED;
-    }
+
     public Plot(Axis mAxis,String strExp, String strvar)
     {
         this.mAxis=mAxis;
         m_strExp = strExp;
         m_strvar = strvar;
-        m_nMinX = -10;
-        m_nMaxX = 10;
-        m_cLine = Color.RED;
+        m_nMinX = -21;
+        m_nMaxX = 21;
+        m_cLine = Color.DKGRAY;
     }
 
-    public Plot(Axis mAxis,String strExp, String strvar, int nMinX, int nMaxX, int cLine)
-    {
-        this.mAxis=mAxis;
-        m_strExp = strExp;
-        m_strvar = strvar;
-        m_nMinX = nMinX;
-        m_nMaxX = nMaxX;
-        m_cLine = cLine;
-    }
-
-    public Plot(Axis mAxis,String strExp, int cLine)
-    {
-        this.mAxis=mAxis;
-        m_strExp = strExp;
-        m_strvar = "x";
-        m_nMinX = -10;
-        m_nMaxX = 10;
-        m_cLine = cLine;
-    }
 
     //定义方程图形的表达式、自变量和自变量范围，例如绘制sin(x)曲线，自变量是x，绘制的范围为[-10,10]
     private String m_strExp;//表达式，例如sin(x)
@@ -76,7 +40,7 @@ public class Plot {
         paint.setAntiAlias(true);
         paint.setColor(m_cLine);
         paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(1);
+        paint.setStrokeWidth(3);
 
         ExpressionWithVars e = new ExpressionWithVars(m_strExp, m_strvar);
         double oldx= m_nMinX;
