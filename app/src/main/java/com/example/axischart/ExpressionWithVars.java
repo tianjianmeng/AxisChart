@@ -1,7 +1,7 @@
 package com.example.axischart;
 
 
-public class ExpressionWithVars extends  Expression{
+public class ExpressionWithVars extends Expression{
     private String m_strExp;
     private String m_strVar;
 
@@ -13,15 +13,9 @@ public class ExpressionWithVars extends  Expression{
 
     public double evalf(double dVarVal)
     {
-
         String str = m_strExp.replace(m_strVar, dVarVal+"");
-
-
         double d = super.evalf(str);
         return d;
 
     }
-
-
-
 }

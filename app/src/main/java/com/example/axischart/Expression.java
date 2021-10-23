@@ -36,7 +36,6 @@ public class Expression {
         return nErrorCount;
     }
 
-
     private void SetError(String str)
     {
         nErrorCount++;
@@ -171,7 +170,6 @@ public class Expression {
 
                     }
                     return Token.T_Number;
-
 
                 case 'a':
                 case 'b':
@@ -363,7 +361,6 @@ public class Expression {
                         dv = Math.PI;
                         break;
 
-
                     case "sin":
                         tok = GetNextToken();
                         skip(Token.T_LB);
@@ -398,13 +395,11 @@ public class Expression {
                     default:
                     {
                         String str =strVal+":非法函数或变量";
-
                         SetError(str);
                     }
                     break;
 
                 }
-
                 break;
 
             //左括号
@@ -422,9 +417,7 @@ public class Expression {
                 tok = GetNextToken();
                 dv = -unary();
                 break;
-
         }
-
         return dv;
     }
 }
